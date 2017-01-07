@@ -9,7 +9,8 @@ package db;
  *
  * @author vice
  */
-public class Task {
+public class Reward {
+    
     int id;
     String category = "default";
     String name;
@@ -19,11 +20,11 @@ public class Task {
      * For adding to the database
      * @param taskName 
      */
-    Task(String taskName) {
-        this.name = taskName;
+    Reward(String rewardName) {
+        this.name = rewardName;
     }
     
-    Task(int id, int score, String category, String name)
+    Reward(int id, int score, String category, String name)
     {
         this.id = id;
         this.score = score;

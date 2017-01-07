@@ -16,4 +16,32 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <env-entry>
+        <env-entry-name>DriverClassName</env-entry-name>
+        <env-entry-value>org.sqlite.JDBC</env-entry-value>
+        <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>Url</env-entry-name>
+        <!--<env-entry-value>jdbc:mysql://localhost:3306/team27_db</env-entry-value> This was an attempt on using a local database-->
+        <env-entry-value>jdbc:sqlite:/home/vice/NetBeansProjects/TimeBoxer/timeBoxerDB.sqlite</env-entry-value>
+        <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>UserId</env-entry-name>
+        <env-entry-value>usernameDefault</env-entry-value>
+        <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>Password</env-entry-name>
+        <env-entry-value>passWord</env-entry-value>
+        <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+    <context-param> 
+        <description>Location to store uploaded file</description> 
+        <param-name>file-upload</param-name> 
+        <!-- This version is for storing locally -->
+        <!-- /Users/greatwmc/NetBeansProjects/CS347-2/JMU-Share/ -->
+        <param-value>/tmp/team27/</param-value> 
+    </context-param>
 </web-app>
