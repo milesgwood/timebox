@@ -3,7 +3,7 @@
     Created on : Jan 8, 2017, 10:32:50 PM
     Author     : vice
 --%>
-
+<%@taglib uri="/struts-tags" prefix="s" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!--Navigation Bar at top -->
 <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
@@ -14,6 +14,7 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
+
             <li class="nav-item active">
                 <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -38,45 +39,25 @@
 <div class="container-fluid">
     <div class="row">
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Overview <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Reports</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Analytics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Export</a>
-                </li>
-            </ul>
+            <s:bean name="bean.CategoryList">
+                <ul class="nav nav-pills flex-column">
+                    <s:iterator value="taskCategories">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">
+                                <s:property /> 
+                            </a>
+                        </li>
+                    </s:iterator>
+                </ul>
 
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Nav item</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Nav item again</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">One more nav</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Another nav item</a>
-                </li>
-            </ul>
-
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Nav item again</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">One more nav</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">Another nav item</a>
-                </li>
-            </ul>
+                <ul class="nav nav-pills flex-column">
+                    <s:iterator value="rewardCategories">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="http://v4-alpha.getbootstrap.com/examples/dashboard/#">
+                                <s:property /> 
+                            </a>
+                        </li>
+                    </s:iterator>
+                </ul>
+            </s:bean>
         </nav>

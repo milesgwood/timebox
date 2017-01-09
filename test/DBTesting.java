@@ -27,6 +27,7 @@ public class DBTesting {
     @BeforeClass
     public static void setUpClass() throws SQLException {
         db = new DbHandler();
+        db.open();
         assert(null != db);
         db.createTablesWithDefaultData();
     }
@@ -40,8 +41,8 @@ public class DBTesting {
     }
     
     @After
-    public void tearDown() throws SQLException {
-        db.close();
+    public void tearDown() {
+            
     }
     
     /* Simply checking and adding tasks / rewards **/
@@ -79,5 +80,13 @@ public class DBTesting {
         assertTrue(db.hasReward(name));
         db.deleteReward(name);
         assertFalse(db.hasReward(name));
+    }
+    
+    @Test
+    public void checkCategories() throws SQLException 
+    {
+        int size;
+        size = db.getCategories().size();
+        assert(size > 0);
     }
 }

@@ -240,15 +240,45 @@ public class DbHandler {
         sql = "CREATE TABLE IF NOT EXISTS rewards (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, cat INTEGER  DEFAULT 1, score INTEGER DEFAULT 0 );";
         stmt = c.prepareStatement(sql);
         stmt.execute();
+        sql = "DROP TABLE IF EXISTS category";
+        stmt = c.prepareStatement(sql);
+        stmt.execute();
         sql = "CREATE TABLE IF NOT EXISTS category ( id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, c_name TEXT NOT NULL);";
         stmt = c.prepareStatement(sql);
         stmt.execute();
         sql = "CREATE TABLE IF NOT EXISTS tasks (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT NOT NULL, cat INTEGER  DEFAULT 1, score INTEGER DEFAULT 0 );";
         stmt = c.prepareStatement(sql);
         stmt.execute();
-        sql = "INSERT INTO category (c_name) VALUES ('no category');";
+        sql = "INSERT INTO category (c_name) VALUES ('No Category');";
         stmt = c.prepareStatement(sql);
         stmt.execute();
+        sql = "INSERT INTO category (c_name) VALUES ('Braindead Designs'), ('Classwork'), ('Bass'), ('Time Boxer'), ('Job Applications'), ('Show All Tasks');";
+        stmt = c.prepareStatement(sql);
+        stmt.execute();
+        sql = "INSERT INTO category (c_name) VALUES ('Material Love'), ('Trips'), ('Media'), ('Rainy Day List'), ('Show All Rewards');";
+        stmt = c.prepareStatement(sql);
+        stmt.execute();
+    }
+    
+    public ArrayList<String> getCategories()
+    {
+        ArrayList<String> categories = new ArrayList<String>();
+        try {
+            if (!isOpen) {
+                open();
+            }
+            sql = "SELECT c_name FROM category";
+            stmt = c.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                categories.add(rs.getString("c_name"));
+            }
+            close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DbHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return categories;
     }
 
     /**
