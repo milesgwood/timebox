@@ -5,5 +5,11 @@
 <struts>
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
+        <action name="jaxAddTask" class="action.AddTask">
+            <result name="success" type="stream">
+                <param name="name">${name}</param>
+            </result>
+            <result name="error">error.jsp</result>
+        </action>
     </package>
 </struts>

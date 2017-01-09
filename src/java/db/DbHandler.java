@@ -105,7 +105,7 @@ public class DbHandler {
             open();
         }
         //INSERT INTO tasks(name, cat) VALUES ("Prototype timeboxer", 1);
-        sql = "INSERT INTO tasks(name, cat) VALUES (?)";
+        sql = "INSERT INTO tasks(name) VALUES (?)";
         stmt = c.prepareStatement(sql);
         stmt.setString(1, t.name);
         stmt.executeUpdate();
@@ -116,7 +116,7 @@ public class DbHandler {
             open();
         }
         //INSERT INTO tasks(name, cat) VALUES ("Prototype timeboxer", 1);
-        sql = "INSERT INTO tasks(name, cat) VALUES (?)";
+        sql = "INSERT INTO tasks(name) VALUES (?)";
         stmt = c.prepareStatement(sql);
         stmt.setString(1, name);
         stmt.executeUpdate();
@@ -126,8 +126,68 @@ public class DbHandler {
         if (!isOpen) {
             open();
         }
-        //INSERT INTO tasks(name, cat) VALUES ("Prototype timeboxer", 1);
         sql = "INSERT INTO rewards(name) VALUES (?)";
+        stmt = c.prepareStatement(sql);
+        stmt.setString(1, name);
+        stmt.executeUpdate();
+    }
+    
+    
+    /**
+     * Determines if the task is in the database
+     * @param name
+     * @return true if it is, false if it isn't
+     * @throws SQLException 
+     */
+    public boolean hasTask(String name) throws SQLException
+    {
+        if (!isOpen) {
+            open();
+        }
+        sql = "SELECT COUNT(*) FROM tasks WHERE name = ?";
+        stmt = c.prepareStatement(sql);
+        stmt.setString(1, name);
+        rs = stmt.executeQuery();
+        int count = rs.getInt(1);
+        return (count != 0);
+    }
+    
+    /**
+     * Determines if the reward is in the database
+     * @param name
+     * @return true if it is, false if it isn't
+     * @throws SQLException 
+     */
+    public boolean hasReward(String name) throws SQLException
+    {
+        if (!isOpen) {
+            open();
+        }
+        sql = "SELECT COUNT(*) FROM rewards WHERE name = ?";
+        stmt = c.prepareStatement(sql);
+        stmt.setString(1, name);
+        rs = stmt.executeQuery();
+        int count = rs.getInt(1);
+        return (count != 0);
+    }
+    
+    public void deleteReward(String name) throws SQLException {
+        if (!isOpen) {
+            open();
+        }
+        //INSERT INTO tasks(name, cat) VALUES ("Prototype timeboxer", 1);
+        sql = "DELETE FROM rewards WHERE name = ? ;)";
+        stmt = c.prepareStatement(sql);
+        stmt.setString(1, name);
+        stmt.executeUpdate();
+    }
+    
+    public void deleteTask(String name) throws SQLException {
+        if (!isOpen) {
+            open();
+        }
+        //INSERT INTO tasks(name, cat) VALUES ("Prototype timeboxer", 1);
+        sql = "DELETE FROM tasks WHERE name = ? ;)";
         stmt = c.prepareStatement(sql);
         stmt.setString(1, name);
         stmt.executeUpdate();

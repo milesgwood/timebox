@@ -24,6 +24,10 @@
         
         <!-- Glyphcons from CSS 3 -->
         <link href="./css/glyphicons.css" rel="stylesheet" />
+        
+        <!-- scripts for the adding of tasks/rewards -->
+        <script type="text/javascript" language="javascript" src="./js/ajax_req.js"></script>
+        <script type="text/javascript" language="javascript" src="./js/comment_voting.js"></script>
     </head>
     <body>
         <jsp:include page='menubar.jsp'/>
@@ -38,9 +42,9 @@
             <div class="row justify-content-between">
                 <div class="col-sm-6">
                     <h2>Tasks</h2>
-                    <form>
+                    <form onsubmit="return !jaxAddTask()">
                         <div class="form-group form-inline">
-                            <input id="newTaskName" class="form-inline form-text form-control" type="text" name="newTask" placeholder="Enter new task">
+                            <input id="newTaskName" class="form-inline form-text form-control" type="text" name="newTask" placeholder="Enter new task" />
                             <button class="btn btn-primary form-inline" type="submit">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
