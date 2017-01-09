@@ -38,7 +38,8 @@
 
             <!-- Top timer section  -->
             <section class="row text-center">
-                <div id="clockdiv" class="">
+                <div class="col col-3"></div>
+                <div id="clockdiv" class="col col-6">
                     <div>
                         <span class="days"></span>
                         <div class="smalltext">Days</div>
@@ -56,6 +57,7 @@
                         <div class="smalltext">Seconds</div>
                     </div>
                 </div>
+                <div class="col col-3"></div>
             </section>
 
             <!-- TASKS start here -->
