@@ -15,6 +15,29 @@ window.onload = function () {
     }
 }
 
+/**
+ * Returns true if it is sucessful. False if it fails.
+ * The success stops the form from submitting.
+ * @returns {Boolean}
+ */
+function jaxAddReward()
+{
+    var newRewardDiv = document.getElementById("newRewardName");
+    var name = newRewardDiv.value;
+    if (!request)
+        return false;
+    var url = "/TimeBoxer/jaxAddReward?name=" + name;
+    request.open("POST", url, true)
+    request.send()
+    newRewardDiv.value = '';
+    return true;
+}
+
+/**
+ * Returns true if it is sucessful. False if it fails.
+ * The success stops the form from submitting.
+ * @returns {Boolean}
+ */
 function jaxAddTask()
 {
     var newTaskDiv = document.getElementById("newTaskName");

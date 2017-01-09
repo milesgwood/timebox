@@ -51,3 +51,5 @@
     }
 </script>
 
+<!-- Loads the clock with the default time -->
+<script src="./js/clock.js"></script>

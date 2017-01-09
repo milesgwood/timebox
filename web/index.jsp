@@ -18,16 +18,17 @@
         
         <!-- CSS newest-->
         <link rel="stylesheet" href="./css/bootstrap.css" media="screen">
-        
+
         <!--Custom Stylesheet for this -->
         <link rel="stylesheet" href="./css/myCustomStyle.css" media="screen">
-        
+
         <!-- Glyphcons from CSS 3 -->
         <link href="./css/glyphicons.css" rel="stylesheet" />
-        
+
         <!-- scripts for the adding of tasks/rewards -->
         <script type="text/javascript" language="javascript" src="./js/ajax_req.js"></script>
         <script type="text/javascript" language="javascript" src="./js/comment_voting.js"></script>
+        <script type="text/javascript" language="javascript" src="./js/clock.js"></script>
     </head>
     <body>
         <jsp:include page='menubar.jsp'/>
@@ -36,7 +37,26 @@
             <h1>Time Boxer</h1>
 
             <!-- Top timer section  -->
-            <section class="row text-center placeholders"></section>
+            <section class="row text-center">
+                <div id="clockdiv" class="">
+                    <div>
+                        <span class="days"></span>
+                        <div class="smalltext">Days</div>
+                    </div>
+                    <div>
+                        <span class="hours"></span>
+                        <div class="smalltext">Hours</div>
+                    </div>
+                    <div>
+                        <span class="minutes"></span>
+                        <div class="smalltext">Minutes</div>
+                    </div>
+                    <div>
+                        <span class="seconds"></span>
+                        <div class="smalltext">Seconds</div>
+                    </div>
+                </div>
+            </section>
 
             <!-- TASKS start here -->
             <div class="row justify-content-between">
@@ -77,7 +97,7 @@
                 <!-- REWARDS start here with the add form -->
                 <div class="col-sm-6">
                     <h2>Rewards</h2>
-                    <form>
+                    <form onsubmit="return !jaxAddReward()">
                         <div class="form-group form-inline">
                             <input id="newRewardName" class="form-inline form-text form-control" type="text" name="newRewardName" placeholder="Enter new reward">
                             <button class="btn btn-primary form-inline" type="submit">
