@@ -48,5 +48,6 @@ function jaxAddTask()
     request.open("POST", url, true)
     request.send()
     newTaskDiv.value = '';
+    globalAddTask(name);
     return true;
 }

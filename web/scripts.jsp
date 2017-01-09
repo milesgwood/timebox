@@ -52,4 +52,4 @@
 </script>
 
 <!-- Loads the clock with the default time -->
-<script src="./js/clock.js"></script>
+<script type="text/javascript" language="javascript" src="./js/clock.js"></script>

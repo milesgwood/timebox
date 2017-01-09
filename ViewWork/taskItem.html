@@ -1,0 +1,27 @@
+<script>
+$(function() {
+  $('#taskForm').on('submit', function(e) {
+    e.preventDefault();
+    var newTask = $("#taskName").val();
+    $("#taskUl").append('<li class="mb-1">' +
+                          '<div class="bg-danger border rounded row p-2 align-items-center">' +
+                              '<div class="col col-2">' +
+                                  '<button class="btn btn-outline-secondary" type="submit">' +
+                                      '<span class="glyphicon glyphicon-check"></span>' +
+                                  '</button>' +
+                              '</div>' +
+                              '<div class="col col-8">'+
+                              newTask +
+                              '</div>' +
+                              '<div class="col col-2 justify-content-end">' +
+                                  '<button class="btn btn-outline-secondary justify-content-end" type="submit">' +
+                                      '<span class="glyphicon glyphicon-remove"></span>' +
+                                  '</button>' +
+                              '</div>' +
+                          '</div>' +
+                        '</li>')
+
+    console.log(newTask);
+    });
+});
+</script>

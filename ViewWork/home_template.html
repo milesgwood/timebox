@@ -3,7 +3,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta http-equiv="refresh" content="2">
+  <!-- <meta http-equiv="refresh" content="2"> -->
 
   <meta name="author" content="Miles Greatwood">
   <link rel="icon" href="http://myfaviconLocation">
@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="./css/myCustomStyle.css" media="screen">
   <!-- Glyphcons from CSS 3 -->
   <link href="./css/glyphicons.css" rel="stylesheet" />
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 </head>
 <body>
@@ -104,16 +106,16 @@
         <div class="row justify-content-between">
           <div class="col-sm-6">
             <h2>Tasks</h2>
-            <form>
+            <form id="taskForm">
               <div class="form-group form-inline">
-                <input class="form-inline form-text form-control" type="text" name="newTask" placeholder="Enter new task">
+                <input id="taskName" class="form-inline form-text form-control" type="text" name="newTask" placeholder="Enter new task">
                 <button class="btn btn-primary form-inline" type="submit">
                   <span class="glyphicon glyphicon-plus"></span>
                 </button>
               </div>
             </form>
             <!-- List of task items -->
-            <ul class="container-fluid" style="list-style-type: none;">
+            <ul id="taskUl" class="container-fluid" style="list-style-type: none;">
               <li class="mb-1">
               <div class="bg-primary border rounded row p-2 align-items-center">
                   <div class="col col-2">
@@ -136,7 +138,7 @@
                       <span class="glyphicon glyphicon-check"></span>
                     </button>
                   </div>
-                  <div class="col col-8">More WordsI need to start on the mobile app</div>
+                  <div class="col col-8">YOOOOO WordsI need to start on the mobile app</div>
                   <div class="col col-2 justify-content-end">
                     <button class="btn btn-outline-secondary justify-content-end" type="submit">
                       <span class="glyphicon glyphicon-remove"></span>
@@ -161,6 +163,34 @@
               </li>
             </ul>
           </div>
+          <script>
+          $(function() {
+            $('#taskForm').on('submit', function(e) {
+              e.preventDefault();
+              var newTask = $("#taskName").val();
+              $("#taskUl").append('<li class="mb-1">' +
+                                    '<div class="bg-danger border rounded row p-2 align-items-center">' +
+                                        '<div class="col col-2">' +
+                                            '<button class="btn btn-outline-secondary" type="submit">' +
+                                                '<span class="glyphicon glyphicon-check"></span>' +
+                                            '</button>' +
+                                        '</div>' +
+                                        '<div class="col col-8">'+
+                                        newTask +
+                                        '</div>' +
+                                        '<div class="col col-2 justify-content-end">' +
+                                            '<button class="btn btn-outline-secondary justify-content-end" type="submit">' +
+                                                '<span class="glyphicon glyphicon-remove"></span>' +
+                                            '</button>' +
+                                        '</div>' +
+                                    '</div>' +
+                                  '</li>')
+
+              console.log(newTask);
+              });
+          });
+            </script>
+
 
           <div class="col-sm-6">
             <h2>Rewards</h2>

@@ -25,10 +25,7 @@
         <!-- Glyphcons from CSS 3 -->
         <link href="./css/glyphicons.css" rel="stylesheet" />
 
-        <!-- scripts for the adding of tasks/rewards -->
-        <script type="text/javascript" language="javascript" src="./js/ajax_req.js"></script>
-        <script type="text/javascript" language="javascript" src="./js/comment_voting.js"></script>
-        <script type="text/javascript" language="javascript" src="./js/clock.js"></script>
+
     </head>
     <body>
         <jsp:include page='menubar.jsp'/>
@@ -64,7 +61,7 @@
             <div class="row justify-content-between">
                 <div class="col-sm-6">
                     <h2>Tasks</h2>
-                    <form onsubmit="return !jaxAddTask()">
+                    <form id="taskForm" onsubmit="return !jaxAddTask()">
                         <div class="form-group form-inline">
                             <input id="newTaskName" class="form-inline form-text form-control" type="text" name="newTask" placeholder="Enter new task" />
                             <button class="btn btn-primary form-inline" type="submit">
@@ -73,7 +70,7 @@
                         </div>
                     </form>
                     <!-- List of tasks -->
-                    <ul class="container-fluid" style="list-style-type: none;">
+                    <ul id="taskUl" class="container-fluid" style="list-style-type: none;">
                         <s:bean name="bean.TaskList">
                             <s:iterator value="tasks" var="curTask">
                                 <li class="mb-1">
@@ -99,7 +96,7 @@
                 <!-- REWARDS start here with the add form -->
                 <div class="col-sm-6">
                     <h2>Rewards</h2>
-                    <form onsubmit="return !jaxAddReward()">
+                    <form id="rewardForm" onsubmit="return !jaxAddReward()">
                         <div class="form-group form-inline">
                             <input id="newRewardName" class="form-inline form-text form-control" type="text" name="newRewardName" placeholder="Enter new reward">
                             <button class="btn btn-primary form-inline" type="submit">
@@ -108,7 +105,7 @@
                         </div>
                     </form>
                     <!-- List of task items -->
-                    <ul class="container-fluid" style="list-style-type: none;">
+                    <ul id="rewardUl" class="container-fluid" style="list-style-type: none;">
                         <s:bean name="bean.RewardList">
                             <s:iterator value="rewards" var="curReward">
                                 <li class="mb-1">
@@ -159,5 +156,32 @@
         </div>
         </div>
         <jsp:include page='scripts.jsp' />
+        <!-- scripts for the adding of tasks/rewards -->
+        <script type="text/javascript" language="javascript">globalAddTask = null;</script>
+        <script>
+            function jqAddNewTaskDiv(name) {
+              $("#taskUl").append('<li class="mb-1">' +
+                                    '<div class="bg-danger border rounded row p-2 align-items-center">' +
+                                        '<div class="col col-2">' +
+                                            '<button class="btn btn-outline-secondary" type="submit">' +
+                                                '<span class="glyphicon glyphicon-check"></span>' +
+                                            '</button>' +
+                                        '</div>' +
+                                        '<div class="col col-8">'+
+                                        name +
+                                        '</div>' +
+                                        '<div class="col col-2 justify-content-end">' +
+                                            '<button class="btn btn-outline-secondary justify-content-end" type="submit">' +
+                                                '<span class="glyphicon glyphicon-remove"></span>' +
+                            '</button>' +
+                            '</div>' +
+                            '</div>' +
+                            '</li>');
+                    console.log('New task: ' + name);
+                };
+                globalAddTask = jqAddNewTaskDiv;
+        </script>
+        <script type="text/javascript" language="javascript" src="./js/ajax_req.js"></script>
+        <script type="text/javascript" language="javascript" src="./js/comment_voting.js"></script>
     </body>
 </html>
