@@ -53,3 +53,55 @@
 
 <!-- Loads the clock with the default time -->
 <script type="text/javascript" language="javascript" src="./js/clock.js"></script>
+<script type="text/javascript" language="javascript">
+    globalAddTask = null;
+    globalAddReward = null;
+</script>
+<script>
+    function jqAddNewTaskDiv(name) {
+        $("#taskUl").append('<li class="mb-1">' +
+                '<div class="bg-danger border rounded row p-2 align-items-center">' +
+                '<div class="col col-2">' +
+                '<button class="btn btn-outline-secondary" type="submit" >' +
+                '<span class="glyphicon glyphicon-check"></span>' +
+                '</button>' +
+                '</div>' +
+                '<div class="col col-8">' +
+                name +
+                '</div>' +
+                '<div class="col col-2 justify-content-end">' +
+                '<button class="btn btn-outline-secondary justify-content-end" type="submit" onclick="deleteTaskDiv(this)">' +
+                '<span class="glyphicon glyphicon-remove"></span>' +
+                '</button>' +
+                '</div>' +
+                '</div>' +
+                '</li>');
+        console.log('New task: ' + name);
+    }
+    ;
+    globalAddTask = jqAddNewTaskDiv;
+</script>
+<script>
+    function jqAddNewRewardDiv(name) {
+        $("#rewardUl").append('<li class="mb-1">' +
+                '<div class="bg-success border rounded row p-2 align-items-center">' +
+                '<div class="col col-2">' +
+                '<button class="btn btn-outline-secondary" type="submit" >' +
+                '<span class="glyphicon glyphicon-check"></span>' +
+                '</button>' +
+                '</div>' +
+                '<div class="col col-8">' +
+                name +
+                '</div>' +
+                '<div class="col col-2 justify-content-end">' +
+                '<button class="btn btn-outline-secondary justify-content-end" type="submit" onclick="deleteRewardDiv(this)">' +
+                '<span class="glyphicon glyphicon-remove"></span>' +
+                '</button>' +
+                '</div>' +
+                '</div>' +
+                '</li>');
+        console.log('New reward: ' + name);
+    };
+    globalAddReward = jqAddNewRewardDiv;
+</script>
+<script type="text/javascript" language="javascript" src="./js/ajax_req.js"></script>

@@ -17,5 +17,17 @@
             </result>
             <result name="error">error.jsp</result>
         </action>
+        <action name="jaxDeleteTask" class="action.DeleteTask">
+            <result name="success" type="stream">
+                <param name="name">${name}</param>
+            </result>
+            <result name="error">error.jsp</result>
+        </action>
+        <action name="jaxDeleteReward" class="action.DeleteReward">
+            <result name="success" type="stream">
+                <param name="name">${name}</param>
+            </result>
+            <result name="error">error.jsp</result>
+        </action>
     </package>
 </struts>

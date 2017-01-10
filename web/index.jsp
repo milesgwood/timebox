@@ -24,15 +24,12 @@
 
         <!-- Glyphcons from CSS 3 -->
         <link href="./css/glyphicons.css" rel="stylesheet" />
-
-
     </head>
     <body>
         <jsp:include page='menubar.jsp'/>
         <!--Start of main middle section-->
         <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
             <h1>Time Boxer</h1>
-
             <!-- Top timer section  -->
             <section class="row text-center">
                 <div class="col col-3"></div>
@@ -82,7 +79,7 @@
                                         </div>
                                         <div class="col col-8"><s:property value="name"/></div>
                                         <div class="col col-2 justify-content-end">
-                                            <button class="btn btn-outline-secondary justify-content-end" type="submit">
+                                            <button class="btn btn-outline-secondary justify-content-end" type="submit" onclick='deleteTaskDiv(this)'>
                                                 <span class="glyphicon glyphicon-remove"></span>
                                             </button>
                                         </div>
@@ -117,7 +114,7 @@
                                         </div>
                                         <div class="col col-8"><s:property value="name"/></div>
                                         <div class="col col-2 justify-content-end">
-                                            <button class="btn btn-outline-secondary justify-content-end" type="submit">
+                                            <button class="btn btn-outline-secondary justify-content-end" type="submit" onclick='deleteRewardDiv(this)'>
                                                 <span class="glyphicon glyphicon-remove"></span>
                                             </button>
                                         </div>
@@ -156,32 +153,5 @@
         </div>
         </div>
         <jsp:include page='scripts.jsp' />
-        <!-- scripts for the adding of tasks/rewards -->
-        <script type="text/javascript" language="javascript">globalAddTask = null;</script>
-        <script>
-            function jqAddNewTaskDiv(name) {
-              $("#taskUl").append('<li class="mb-1">' +
-                                    '<div class="bg-danger border rounded row p-2 align-items-center">' +
-                                        '<div class="col col-2">' +
-                                            '<button class="btn btn-outline-secondary" type="submit">' +
-                                                '<span class="glyphicon glyphicon-check"></span>' +
-                                            '</button>' +
-                                        '</div>' +
-                                        '<div class="col col-8">'+
-                                        name +
-                                        '</div>' +
-                                        '<div class="col col-2 justify-content-end">' +
-                                            '<button class="btn btn-outline-secondary justify-content-end" type="submit">' +
-                                                '<span class="glyphicon glyphicon-remove"></span>' +
-                            '</button>' +
-                            '</div>' +
-                            '</div>' +
-                            '</li>');
-                    console.log('New task: ' + name);
-                };
-                globalAddTask = jqAddNewTaskDiv;
-        </script>
-        <script type="text/javascript" language="javascript" src="./js/ajax_req.js"></script>
-        <script type="text/javascript" language="javascript" src="./js/comment_voting.js"></script>
     </body>
 </html>
