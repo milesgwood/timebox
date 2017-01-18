@@ -36,7 +36,6 @@ public class DeleteTask extends ActionSupport  {
     }
     
     
-    
     public String execute() throws Exception {
         DbHandler db = new DbHandler();
         System.out.println("Deleting Task " + name);
